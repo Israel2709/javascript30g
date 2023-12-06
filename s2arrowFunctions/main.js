@@ -30,8 +30,25 @@ let secondEvaluation = isOddOrEven(24);
 console.log(firstEvaluation);
 console.log(secondEvaluation);
 
-prompt("Ingresa un número");
+//prompt("Ingresa un número");
 
 /*
     Crear una función que reciba un string, cuente la cantidad de caracteres que tiene, y si tiene menos de 10 caracteres, indique que el string es corto, si tiene 10 o más indique que el string es largo
     */
+
+const printLetterByLetter = (str) => {
+  let count = str.length;
+  for (let i = 0; i < count; i++) {
+    console.log(str[i]);
+  }
+
+  let message = "este string contiene" + count + "caracteres";
+  let message2 = `Estre string tiene ${count} caracteres`;
+  let message3 = `Este string es ${
+    count < 5 ? "corto" : "largo"
+  } y tiene ${count} caracteres`;
+  console.log(`este string tiene ${count} caracteres`);
+  console.log(message3);
+};
+
+printLetterByLetter("Ana");
