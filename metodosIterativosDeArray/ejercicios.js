@@ -62,6 +62,30 @@ let persons = [
             Sidney => Sid
         - si la ciudad tiene más de una palabra, mostramos las iniciales de cada palabra
             ciudad del cabo =>  C.D.C.
+*/
+//{ ciudad: "Nueva York", pais: "Estados Unidos" },
+
+const getAbbreviations = (dataArray) => {
+  dataArray.forEach((city) => {
+    let { ciudad } = city;
+    let ciudadArray = ciudad.split(" ");
+    if (ciudadArray.length > 1) {
+      let intials = "";
+      ciudadArray.forEach((word) => {
+        let intial = word.charAt(0);
+        intials += `${intial.toUpperCase()}. `;
+      });
+      console.log(intials);
+    } else {
+      let incialesCiudad = ciudad.substring(0, 3);
+      console.log(incialesCiudad);
+    }
+  });
+};
+
+getAbbreviations(cities);
+
+/*
 3.- usando el array persons, necesito una nueva lista que contenga únicamente los nombres completos de cada persona.
 4.- usando el array persons, necesito que los correos de todas las personas sean cambiados a {persona}@kodemia.mx
 */
