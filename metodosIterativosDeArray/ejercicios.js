@@ -57,6 +57,17 @@ let persons = [
 /*
 1.- Necesitamos imprimir en consola un texto por cada elemento del array, con la siguiente estructura:
      `La ciudad {ciudad} se encuentra en {pais}`
+     */
+const printAllCities = (dataArray) => {
+  dataArray.forEach((city) => {
+    let { ciudad, pais } = city;
+    let label = `La ciudad ${ciudad} se encuentra en ${pais}`;
+    console.log(label);
+  });
+};
+
+let test1 = printAllCities(cities);
+/*
 2.- Necesito mostrar en pantalla los nombres de las ciudades, abreviados
         -si la ciudad tiene una sola palabra, mostramos los primeros 3 caracteres del nombre de la ciudad
             Sidney => Sid
@@ -73,6 +84,7 @@ const getAbbreviations = (dataArray) => {
       let intials = "";
       ciudadArray.forEach((word) => {
         let intial = word.charAt(0);
+
         intials += `${intial.toUpperCase()}. `;
       });
       console.log(intials);
@@ -87,5 +99,61 @@ getAbbreviations(cities);
 
 /*
 3.- usando el array persons, necesito una nueva lista que contenga únicamente los nombres completos de cada persona.
+*/
+
+/*
+const getOnlyNamesForEach = (dataArray) => {
+  let result = [];
+  dataArray.forEach(({ nombre, apellidos }) => {
+    let fullName = `${nombre} ${apellidos}`;
+    result.push(fullName);
+  });
+  return result;
+};*/
+
+/*const getOnlyNamesMap = (dataArray) => {
+  let result = dataArray.map((person) => {
+    let { nombre, apellidos } = person;
+    return `${nombre} ${apellidos}`;
+  });
+  return result;
+};*/
+
+/* destructurando en argumentos: */
+
+/*const getOnlyNamesMap = (dataArray) => {
+  let result = dataArray.map(({ nombre, apellidos }) => {
+    return `${nombre} ${apellidos}`;
+  });
+  return result;
+};*/
+
+/*aplicando return implícito*/
+/*const getOnlyNamesMap = (dataArray) => {
+  let result = dataArray.map(({ nombre, apellidos }) => `${nombre} ${apellidos}`)
+  return result;
+};*/
+
+/*volviendo a aplicar return implícito*/
+
+const getOnlyNamesMap = (dataArray) =>
+  dataArray.map(({ nombre, apellidos }) => `${nombre} ${apellidos}`);
+
+/*
 4.- usando el array persons, necesito que los correos de todas las personas sean cambiados a {persona}@kodemia.mx
 */
+
+const updateEmails = (dataArray) =>
+  dataArray.map((person) => ({
+    ...person,
+    correo: person.correo.replace("example.com", "kodemia.mx"),
+  }));
+
+const updateEmails = (dataArray) =>
+  dataArray.map((person) => ({
+    ...person,
+    correo: person.correo.replace("@example.com", "@kodemia.mx"),
+  }));
+
+let testUpdateEmails = updateEmails(persons);
+console.log(testUpdateEmails);
