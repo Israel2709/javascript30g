@@ -81,43 +81,26 @@ let products = [
   },
 ];
 
-/*
-    1.- Necesito una nueva lista, que contenga los productos que estan bajos en stock (<25)
-*/
-
-const getLowStock = (dataArray) => {
-  let lowStock = [];
-  dataArray.forEach((product) => {
-    if (product.stock < 25) lowStock.push(product);
-  });
-  return lowStock;
+const getTotalCost = (dataArray) => {
+  let result = dataArray.reduce((accum, current, index, arr) => {
+    let price = current.price;
+    return Math.ceil(accum + price);
+  }, 0);
+  console.log(result);
 };
 
-let lowStockList = getLowStock(products);
-console.log(lowStockList);
-/*
-    2.- Necesito una nueva lista que contenga los productos, únicamente con su nombre, y 
-    el precio real después de aplicar el descuento 
-    */
-const getRealPrices = (dataArray) => {
-  let result = dataArray.map(({ name, price, discount }) => ({
-    name,
-    realPrice: price * (1 - discount),
-  }));
-  return result;
+getTotalCost(products);
+
+const filterWithReduce = (dataArray) => {
+  let result = dataArray.reduce(
+    (accum, current) => {
+      return current.stock < 25
+        ? { ...accum, bajoStock: [...accum.bajoStock, current] }
+        : { ...accum, altoStock: [...accum.altoStock, current] };
+    },
+    { bajoStock: [], altoStock: [] }
+  );
+  console.log(result);
 };
 
-let realPriceList = getRealPrices(products);
-console.log(realPriceList);
-/*
-    3.- Necesito saber el precio promedio de los productos
-*/
-
-const getAveragePrice = (dataArray) => {
-  let totalPrice = 0;
-  dataArray.forEach(({ price }) => (totalPrice += price));
-  return totalPrice / dataArray.length;
-};
-let testAverage = getAveragePrice(products);
-
-console.log(testAverage);
+filterWithReduce(products);
