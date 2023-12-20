@@ -1,0 +1,9 @@
+#my-list .list-group-item:nth-of-type(even) {
+  background: peru !important;
+}
+#my-list .list-group-item:nth-of-type(odd) {
+  background: slategray !important;
+}
+#my-list .list-group-item:nth-of-type(3n) {
+  background: red !important;
+}/*# sourceMappingURL=styles.css.map */

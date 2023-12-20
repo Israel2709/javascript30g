@@ -902,13 +902,112 @@ let users = [
 ];
 
 /*considerando el array users, completar los siguientes requerimientos:
-  
   1.- Se requiere poder localizar a un usuario con base en su UUID
+*/
+
+const findIUserByUuid = (usersList, uuidToSearch) => {
+  let result = usersList.filter((user, index, array) => {
+    return user.login.uuid === uuidToSearch;
+  });
+  return result;
+};
+
+let user1 = findIUserByUuid(users, "7a1560ad-6e99-4408-93bd-c7a1891bb4f5");
+
+console.log(user1);
+
+/*
   2.- Se requiere obtener una nueva lista en la que aparezcan todos los usuarios con todas sus propiedades, pero que el nombre sea sólo un string con el formato "{title} {name} {last}", por ejemplo "Mr. Juan Perez Prado"
-  3.- Se requiere una lista con los países disponibles en la lista original sin repetir
-  4.- Se requiere poder obtener una lista que muestre a los usuarios pertenecientes a un país específico ( Iran, Norway, etc)
-  5.- Se requiere una lista que muestre a aquellos usuarios que no cuenten con un password seguro, considerando que un password seguro tiene más de 8 caracteres, e incluye mayúsculas, minúsculas y números ( revisar regex)
-  6.- Indicar la cantidad de usuarios mayores de 30 años
-  7.- Indicar la edad promedio de los usuarios en la lista
-  8.- Crear una lista que agrupe a los usuarios por género (una lista para masculinos, una para femeninos)
   */
+
+const transformUsersName = (usersList) => {
+  let result = usersList.map((user) => {
+    return {
+      ...user,
+      name: `${user.name.title} ${user.name.first} ${user.name.last}`,
+    };
+  });
+  return result;
+};
+
+let transformedNames = transformUsersName(users);
+console.log(transformedNames);
+/*
+  3.- Se requiere una lista con los países disponibles en la lista original sin repetir
+*/
+
+const getSingleCountries = (usersList) => {
+  let result = usersList.reduce((accum, current, index, array) => {
+    return accum.includes(current.location.country)
+      ? accum
+      : [...accum, current.location.country];
+  }, []);
+  return result;
+};
+
+let singleCountries = getSingleCountries(users);
+console.log(singleCountries);
+
+/*4.- Se requiere poder obtener una lista que muestre a los usuarios pertenecientes a un país específico ( Iran, Norway, etc)
+ */
+
+const getUsersByCountry = (usersList, countryToSearch) => {
+  let result = usersList.filter(
+    (user) =>
+      user.location.country.toLowerCase() === countryToSearch.toLowerCase()
+  );
+  return result;
+};
+
+let searchByIran = getUsersByCountry(users, "Iran");
+
+console.log(searchByIran);
+
+/*
+  5.- Se requiere una lista que muestre a aquellos usuarios que no cuenten con un password seguro, considerando que un password seguro tiene más de 8 caracteres, e incluye mayúsculas, minúsculas y números ( revisar regex)
+*/
+const testSecurePasswords = (usersList) => {
+  const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+  let result = usersList.filter((user) => !regex.test(user.login.password));
+  return result;
+};
+
+let unsecurePasswords = testSecurePasswords(users);
+console.log(unsecurePasswords);
+/*
+  6.- Indicar la cantidad de usuarios mayores de 30 años
+*/
+
+const getOlderThanThirty = (usersList) => {
+  let result = usersList.reduce((accum, current) => {
+    return current.dob.age > 30 ? accum + 1 : accum;
+  }, 0);
+
+  /*let result = usersList.filter((user) => user.dob.age > 30);
+  return result.length;*/
+  return result;
+};
+
+let olderPeople = getOlderThanThirty(users);
+console.log(olderPeople);
+/*
+  7.- Indicar la edad promedio de los usuarios en la lista
+*/
+const getAgesAverage = (usersList) => {
+  let result = usersList.reduce((accum, current, index, arr) => {
+    return accum + current.dob.age / usersList.length;
+  }, 0);
+  return result;
+};
+
+let agesAverage = getAgesAverage(users);
+console.log(agesAverage);
+/*
+  8.- Crear una lista que agrupe a los usuarios por género (una lista para masculinos, una para femeninos)
+*/
+
+const filterByGender = (usersList, genderToSearch) =>
+  usersList.filter((user) => user.gender === genderToSearch);
+
+let males = filterByGender("male");
+let females = filterByGender("female");
