@@ -1,38 +1,19 @@
-console.log("hola koders!");
+let textModifier = document.getElementById("text-modifier");
 
-/*el método getElementById({elementId}) permite seleccionar un elemento de DOM con base en su id,
-y devuelve un elemento de DOM*/
-let greetingButton = document.getElementById("greeting-button");
+let mainHeading = document.getElementById("main-heading");
 
-console.log(greetingButton);
+textModifier.addEventListener("keyup", (event) => {
+  let newText = event.target.value;
+  mainHeading.innerText = newText;
+});
 
-/*El método getElementsByTagName, selecciona todos los elementos de DOM que compartan el tagname indicado, y los devuelve envueltos en una HTMLCollection*/
+let radios = document.querySelectorAll("input[name='survey']");
+console.log(radios);
 
-let paragraphs = document.getElementsByTagName("p");
-console.log(paragraphs);
-console.log(paragraphs[0]);
-
-/*El método getElementsByClassName, selecciona todos los elementos de DOM que compartan la clase indicada, y los devuelve como una HTMLCollection*/
-let listGroupItems = document.getElementsByClassName("list-group-item");
-
-console.log(listGroupItems);
-
-const changeLiColor = () => {
-  for (let i = 0; i < listGroupItems.length; i++) {
-    listGroupItems[i].style.color = "peru";
-  }
-};
-
-let listItem = document.querySelector("#lista-2 .list-group-item");
-
-console.log(listItem);
-
-let listItems = document.querySelectorAll("#lista-2 .list-group-item");
-
-console.log(listItems);
-
-const formatListItems = () => {
-  listItems.forEach((element) => {
-    element.style.backgroundColor = "peru";
+let surveyResponse = document.getElementById("survey-response");
+radios.forEach((radio) => {
+  radio.addEventListener("change", (event) => {
+    let newValue = event.target.value;
+    surveyResponse.innerText = newValue;
   });
-};
+});

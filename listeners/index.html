@@ -14,20 +14,20 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6">
-                <h1>Hola koders!</h1>
+                <h1 id="main-heading">Hola koders!</h1>
                 <form action="" class="p-3 border">
                     <div class="form-group">
-                        <input type="text" class="form-control">
+                        <input id="text-modifier" type="text" class="form-control">
                     </div>
                 </form>
                 <div class="d-flex flex-column gap-3">
                     <p>Qué tan bien te cae tu mentor de Front???</p>
-                    <input type="radio" name="survey"> Super bien
-                    <input type="radio" name="survey"> bien
-                    <input type="radio" name="survey"> Regular
-                    <input type="radio" name="survey"> Lo odio
-                    <input type="radio" name="survey"> Ya traigan otro
-                    <p>Súper</p>
+                    <input type="radio" name="survey" value="Super bien"> Super bien
+                    <input type="radio" name="survey" value="Bien"> bien
+                    <input type="radio" name="survey" value="Regular"> Regular
+                    <input type="radio" name="survey" value="Lo odio"> Lo odio
+                    <input type="radio" name="survey" value="Ya traigan otro"> Ya traigan otro
+                    <p class="border border-primary p-3" id="survey-response">Súper</p>
                 </div>
             </div>
             <div class="col-12 col-md-6">
