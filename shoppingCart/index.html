@@ -12,27 +12,39 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-4">
                 <form action="" class="bg-dark text-white border rounded p-3 mb-3">
-
-                    alt="">
-                    <!--
-                        Nombre
-                        descripción
-                        imagen
-                        precio
-                    -->
+                    <div class="form-group mb-3">
+                        <label for="">Nombre del producto</label>
+                        <input id="product-name" type="text" class="form-control">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="">Descripción</label>
+                        <input id="product-description" type="text" class="form-control">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="">Precio</label>
+                        <input id="product-price" type="number" class="form-control">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="">Imagen</label>
+                        <input id="product-image" type="text" class="form-control">
+                    </div>
+                    <button id="save-product" type="button" class="btn btn-secondary">Guardar producto</button>
                 </form>
-                <h2>Tu carrito tiene {cantidad} productos, y el precio total es de {precioTotal} MXN</h2>
+                <h2 id="cart-info"></h2>
             </div>
-            <div class="col-12 col-md-6">
-                <!--Aqui van las cards de los productos-->
+            <div class="col-12 col-md-8">
+                <div id="products-container" class="row row-cols-1 row-cols-md-2 g-4">
+
+                </div>
             </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
 </body>
 </body>
 
