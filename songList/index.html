@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song list</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <form action="">
+                    <div class="form-group"><label for="">Task</label><input class="form-control" type="text"
+                            id="title"></div>
+                    <div class="form-group"><label for="">Estimated time</label><input class="form-control" type="text"
+                            id="time"></div>
+                    <button type="button" id="save-task" class="btn btn-dark">Save task</button>
+                </form>
+                <div>
+                    <ul id="task-list" class="list-group">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <form action="">
+                    <div class="form-group"><label for="">Tiempo disponible:</label>
+                        <input class="form-control" type="text" id="available-time" value="0">
+                    </div>
+                </form>
+                <ul id="selected-tasks" class="list-group">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
