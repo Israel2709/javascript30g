@@ -23,7 +23,7 @@ const printAllChars = (charsData) => {
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">${name}</h5>
-                                <button class="detail-btn btn btn-primary">Ver más</button>
+                                <button data-char-id=${id} class="detail-btn btn btn-primary">Ver más</button>
                             </div>
                         </div>
                     </div>
@@ -39,6 +39,12 @@ const printAllChars = (charsData) => {
 
   /* a cada botón, le agregamos un listener*/
   detailBtns.forEach((button) => {
-    button.addEventListener("click", (event) => {});
+    button.addEventListener("click", (event) => {
+      console.log(event.target);
+      console.log(event.target.dataset.charId);
+      let charId = event.target.dataset.charId;
+      /*este listener va a abrir la vista "char-detail"*/
+      window.open(`views/char-detail.html?charId=${charId}`);
+    });
   });
 };
